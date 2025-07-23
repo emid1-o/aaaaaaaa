@@ -47,41 +47,61 @@ export class MusicasComponent implements OnInit {  // ⬅️ implements OnInit p
       return;
     }
 
-    this.musicaService.save(this.musica).subscribe({
-      next: () => {
-
-        Swal.fire({
-          title: "Música salva",
-          
-          icon: "success"
-        });
-
-        this.musica = { nome: '', artista: '', genero: '' }; // limpa form
-        this.carregarMusicas(); // atualiza a tabela
-      },
-      error: () => {
-        console.error();
-        alert('Erro ao salvar música');
-      }
-    });
+    if (this.musica.id) {
+      // EDIÇÃO
+      this.musicaService.update(this.musica.id, this.musica).subscribe({
+        next: () => {
+          Swal.fire({
+            title: "Música atualizada!",
+            icon: "success"
+          });
+          this.musica = { nome: '', artista: '', genero: '' };
+          this.carregarMusicas();
+        },
+        error: () => {
+          alert('Erro ao atualizar música');
+        }
+      });
+    } else {
+      // NOVO CADASTRO
+      this.musicaService.save(this.musica).subscribe({
+        next: () => {
+          Swal.fire({
+            title: "Música salva!",
+            icon: "success"
+          });
+          this.musica = { nome: '', artista: '', genero: '' };
+          this.carregarMusicas();
+        },
+        error: () => {
+          alert('Erro ao salvar música');
+        }
+      });
+    }
   }
 
- 
+
+  editarMusica(musica: Musica) {
+    this.musica = { ...musica }; 
+  }
+
+
+
   deletarMusica(id: number | undefined): void {
-  if (!id) return;
+    if (!id) return;
 
-  if (confirm('Tem certeza que deseja excluir esta música?')) {
-    this.musicaService.deleteById(id).subscribe({
-      next: () => {
-        alert('Música deletada com sucesso!');
-        this.carregarMusicas();
-      },
-      error: err => {
-        console.error(err);
-        alert('Erro ao deletar música');
-      }
-    });
+    if (confirm('Tem certeza que deseja excluir esta música?')) {
+      this.musicaService.deleteById(id).subscribe({
+        next: () => {
+          alert('Música deletada com sucesso!');
+          this.carregarMusicas();
+        },
+        error: err => {
+          console.error(err);
+          alert('Erro ao deletar música');
+        }
+      });
+    }
   }
-}
 
 }

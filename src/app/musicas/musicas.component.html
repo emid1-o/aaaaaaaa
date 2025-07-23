@@ -26,7 +26,7 @@
 
   <br />
 
-  <button id="butao1" class="btn btn-primary" type="submit">Salvar</button>
+  <button id="botao1" class="btn btn-primary" type="submit">Salvar</button>
 </form>
 
 <hr />
@@ -39,17 +39,20 @@
     <th>Nome</th>
     <th>Artista</th>
     <th>Gênero</th>
-    <th>Ações</th>
+    <th style="padding-left: 70px;">Ações</th>
   </tr>
   <tr *ngFor="let musica of musicas">
     <td>{{ musica.nome }}</td>
     <td>{{ musica.artista }}</td>
     <td>{{ musica.genero }}</td>
     <td>
-
-      <button (click)="deletarMusica(musica.id)" id="butao2" class="btn btn-danger" type="submit">Deletar</button>
+      <div style="display: flex; gap: 4px">
+      <button (click)="deletarMusica(musica.id)" id="botao2" class="btn btn-danger" type="submit">Deletar</button>
+      <button (click)="editarMusica(musica)" id="botao3" class="btn btn-secondary" type="submit">Editar</button>
+      </div>
 
     </td>
+  
   </tr>
 </table>
 </div>

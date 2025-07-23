@@ -13,6 +13,7 @@ table {
     width: 800px;
     height: auto;
     justify-self: center;
+    
 }
 
 .div1 {
@@ -22,7 +23,18 @@ table {
 
 }
 
-#butao1 {
+#botao1 {
 
     margin-left: 200px;
 }
+
+.moverDireita {
+
+    margin-left: 100px;
+}
+
+#botao2 {
+
+    gap: 10px;
+}
+

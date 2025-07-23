@@ -23,4 +23,8 @@ export class MusicaService {
   deleteById(id: number): Observable<string> {
     return this.http.delete<string>(`${this.API}deleteById/${id}`,  { responseType: 'text' as 'json' })
   }
+
+  update(id: number, musica:Musica): Observable<Musica> {
+    return this.http.put<Musica>(`${this.API}update/${id}`, musica)
+  }
 }
