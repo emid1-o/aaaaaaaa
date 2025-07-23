@@ -1,0 +1,57 @@
+<body>
+<div class="centralizado">
+<h1>Cadastro de Música</h1>
+
+<form (ngSubmit)="salvarMusica()" class="mb-4">
+
+  <div class="div1">
+  
+  <label mdbClass="form-label" for="form1">Nome:</label>
+  <input mdbInput type="text" id="form1" class="form-control" [(ngModel)]="musica.nome" name="nome" required />
+  </div>
+
+  <br />
+
+  <div class="div1">
+  <label mdbClass="form-label" for="artista">Artista:</label>
+  <input mdbInput type="text" id="artista" class="form-control" [(ngModel)]="musica.artista" name="artista" required />
+  </div>
+
+  <br />
+
+  <div class="div1">
+  <label mdbClass="form-label" for="genero">Gênero:</label>
+  <input mdbInput type="text" id="genero" class="form-control" [(ngModel)]="musica.genero" name="genero" required />
+  </div>
+
+  <br />
+
+  <button id="butao1" class="btn btn-primary" type="submit">Salvar</button>
+</form>
+
+<hr />
+
+
+<h2>Lista de Músicas</h2>
+
+<table class="table table-striped" cellpadding="8">
+  <tr>
+    <th>Nome</th>
+    <th>Artista</th>
+    <th>Gênero</th>
+    <th>Ações</th>
+  </tr>
+  <tr *ngFor="let musica of musicas">
+    <td>{{ musica.nome }}</td>
+    <td>{{ musica.artista }}</td>
+    <td>{{ musica.genero }}</td>
+    <td>
+
+      <button (click)="deletarMusica(musica.id)" id="butao2" class="btn btn-danger" type="submit">Deletar</button>
+
+    </td>
+  </tr>
+</table>
+</div>
+</body>
+
