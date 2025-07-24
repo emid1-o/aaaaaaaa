@@ -1,6 +1,6 @@
-<body>
+<div class="tudo">
 <div class="centralizado">
-<h1>Cadastro de Música</h1>
+<h1 class="text-center text-primary fw-semibold border-bottom pb-2 mb-4">Cadastro de Música</h1>
 
 <form (ngSubmit)="salvarMusica()" class="mb-4">
 
@@ -32,7 +32,7 @@
 <hr />
 
 
-<h2>Lista de Músicas</h2>
+<h2 class="text-center text-primary fw-semibold border-bottom pb-2 mb-4">Lista de Músicas</h2>
 
 <table class="table table-striped" cellpadding="8">
   <tr>
@@ -46,7 +46,7 @@
     <td>{{ musica.artista }}</td>
     <td>{{ musica.genero }}</td>
     <td>
-      <div style="display: flex; gap: 4px">
+      <div class="unico">
       <button (click)="deletarMusica(musica.id)" id="botao2" class="btn btn-danger" type="submit">Deletar</button>
       <button (click)="editarMusica(musica)" id="botao3" class="btn btn-secondary" type="submit">Editar</button>
       </div>
@@ -56,5 +56,6 @@
   </tr>
 </table>
 </div>
-</body>
+</div>
+
 

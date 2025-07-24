@@ -9,12 +9,12 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-musicas',
-  standalone: true,                // ⬅️ IMPORTANTE para usar imports aqui
+  standalone: true,                
   imports: [CommonModule, FormsModule],
   templateUrl: './musicas.component.html',
-  styleUrls: ['./musicas.component.scss']  // plural e com colchetes
+  styleUrls: ['./musicas.component.scss']  
 })
-export class MusicasComponent implements OnInit {  // ⬅️ implements OnInit para usar ngOnInit
+export class MusicasComponent implements OnInit {  
 
   musica: Musica = {
     nome: '',
@@ -48,7 +48,7 @@ export class MusicasComponent implements OnInit {  // ⬅️ implements OnInit p
     }
 
     if (this.musica.id) {
-      // EDIÇÃO
+      
       this.musicaService.update(this.musica.id, this.musica).subscribe({
         next: () => {
           Swal.fire({
@@ -63,7 +63,7 @@ export class MusicasComponent implements OnInit {  // ⬅️ implements OnInit p
         }
       });
     } else {
-      // NOVO CADASTRO
+      
       this.musicaService.save(this.musica).subscribe({
         next: () => {
           Swal.fire({
